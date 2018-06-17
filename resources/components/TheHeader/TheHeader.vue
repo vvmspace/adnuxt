@@ -42,6 +42,10 @@
     padding: 0.3rem;
   }
 
+  .nav-link.nuxt-link-exact-active {
+    border-bottom: 3px solid #06c4d1;
+  }
+
   .nav-link a {
     display: block;
     text-decoration: none;
