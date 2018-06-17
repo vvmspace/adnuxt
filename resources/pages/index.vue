@@ -1,9 +1,9 @@
 <template>
   <section id="posts">
   <PostPreview
-    v-for="post in posts"
+    v-for="post in l"
     :key="post.id"
-    :id="post.id"
+    :id="post.slug"
     :title="post.title"
     :thumbnailImage="post.thumbnailUrl"
     :excerpt="post.previewText"
@@ -14,6 +14,7 @@
 <script>
 
   import PostPreview from "@/components/PostPreview/PostPreview";
+  const Post = require('@/../app/Models/Post');
 
   export default {
     components: {PostPreview},
@@ -32,8 +33,13 @@
             thumbnailUrl: "/biggl.jpg",
             id: 'a-second-beginning'
           },
-
         ]
+      }
+    },
+    async asyncData() {
+      let psts = await Post.all();
+      return {
+        l: JSON.parse(JSON.stringify(psts))
       }
     }
   }
